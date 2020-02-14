@@ -230,20 +230,22 @@ class LinkedList
     # assume indexing starts at 0 while counting to n
     ### Space = O(1) and Time = O(n)
     def find_nth_from_end(n)
+
       if !@head
         return nil
       end
   
       potentialWinner = @head 
       currScout = @head
-      count = 1
+      count = 0
   
       while n > count
         if currScout.next
           currScout = currScout.next
           count += 1
         else
-          return "not enough nodes for #{n}th node from end"
+          # puts "not enough nodes for #{n}th node from end"
+          return nil
         end
       end
   
@@ -281,27 +283,29 @@ class LinkedList
       end
     end
 
+
     # method that inserts a given value as a new last node in the linked list
-    ### Space = O(TODO) and Time = O(TODO)
+    ### Space = O(1) and Time = O(n)
     def add_last(value)
-      # newNode = Node.new(value)
+      newNode = Node.new(value)
       
-      # if !@head 
-      #   @head = newNode
-      # end
+      if @head.nil? 
+        @head = newNode
+        return
+      end
 
-      # prev = nil
-      # curr = @head 
+      prev = nil
+      curr = @head 
 
-      # while curr
-      #   if curr.next 
-      #     prev = curr
-      #     curr = curr.next
-      #   else
-      #     curr.next = newNode
-      #     return
-      #   end
-      # end
+      while curr
+        if curr.next 
+          prev = curr
+          curr = curr.next
+        else
+          curr.next = newNode
+          return
+        end
+      end
       
     end
 
@@ -376,5 +380,27 @@ class LinkedList
       end
 
       current.next = @head # make the last node link to first node
+    end
+
+
+
+
+
+
+    ###  FOR MY OWN USE
+    def showLL
+      if !@head 
+        return "empty list"
+      end
+  
+      printout = "LL = #{@head.data}"
+      curr = @head.next 
+  
+      while curr 
+        printout += " -> #{curr.data}"
+        curr = curr.next
+      end
+  
+      return printout
     end
 end
