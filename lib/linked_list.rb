@@ -261,13 +261,23 @@ class LinkedList
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    ### Space = O(TODO) and Time = O(TODO)
+    ### Space = O(1) and Time = O(n)
     def has_cycle
-      raise NotImplementedError
+      slow = head
+      fast = head 
 
+      # slow is moving 1 at a time, fast is moving 2 at a time
+        # if fast ever ends up at nil, return false
+        # if fast loops back and eventually ends up at same node as slow, return true
+      
+      until !fast || !fast.next 
+        fast = fast.next.next 
+        slow = slow.next
 
+        return true if fast == slow 
+      end
 
-
+      return false
     end
 
 
@@ -369,7 +379,7 @@ class LinkedList
     # Helper method for tests
     # Creates a cycle in the linked list for testing purposes
     # Assumes the linked list has at least one node
-    ### Space = O(TODO) and Time = O(TODO)
+    ### Space = O(1) and Time = O(n)
     def create_cycle
       return if @head == nil # don't do anything if the linked list is empty
 
@@ -380,11 +390,8 @@ class LinkedList
       end
 
       current.next = @head # make the last node link to first node
+      # now it's 1 giant loop!
     end
-
-
-
-
 
 
     ###  FOR MY OWN USE
