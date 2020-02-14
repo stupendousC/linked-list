@@ -13,7 +13,7 @@ end
 # Defines the singly linked list
 class LinkedList
     def initialize
-      @head = nil # keep the head private. Not accessible outside this class
+      @head = nil # keep the @head private. Not accessible outside this class
     end
 
     # method to add a new node with the specific data value in the linked list
@@ -27,9 +27,9 @@ class LinkedList
     # returns true if found, false otherwise
     ### Space = O(1) and Time = O(n)
     def search(value)
-      return false if !head
+      return false if !@head
 
-      curr = head 
+      curr = @head 
       while curr
         if curr.data == value 
           return true 
@@ -45,10 +45,10 @@ class LinkedList
     # returns the data value and not the node
     ### Space = O(1) and Time = O(n)
     def find_max
-      return nil if !head
+      return nil if !@head
 
-      max = head.data
-      curr = head 
+      max = @head.data
+      curr = @head 
       
       while curr 
         max = curr.data if curr.data > max 
@@ -62,10 +62,10 @@ class LinkedList
     # returns the data value and not the node
     ### Space = O(1) and Time = O(n)
     def find_min
-      return nil if !head
+      return nil if !@head
 
-      min = head.data
-      curr = head 
+      min = @head.data
+      curr = @head 
       
       while curr 
         min = curr.data if curr.data < min 
@@ -80,7 +80,7 @@ class LinkedList
     ### Space = O(1) and Time = O(n)
     def length
       count = 0
-      curr = head 
+      curr = @head 
 
       while curr
         count += 1
@@ -95,7 +95,7 @@ class LinkedList
     # returns nil if there are fewer nodes in the linked list than the index value
     ### Space = O(1) and Time = O(n)
     def get_at_index(index)
-      curr = head
+      curr = @head
       count = 0 
 
       while count < index && curr
@@ -103,7 +103,7 @@ class LinkedList
         curr = curr.next 
       end
 
-      if count == n 
+      if count == index 
         return curr.data 
       else 
         return nil
@@ -113,12 +113,12 @@ class LinkedList
     # method to print all the values in the linked list
     ### Space = O(n) and Time = O(n)
     def visit
-      if !head 
+      if !@head 
         return "empty list"
       end
   
-      printout = "LL = #{head.data}"
-      curr = head.next 
+      printout = "LL = #{@head.data}"
+      curr = @head.next 
   
       while curr 
         printout += " -> #{curr.data}"
@@ -132,7 +132,7 @@ class LinkedList
     ### Space = O(1) and Time = O(n)
     def delete(value)
       prev = nil
-      curr = head 
+      curr = @head 
 
       while curr 
         if curr.data == value 
@@ -156,16 +156,16 @@ class LinkedList
     # note: the nodes should be moved and not just the values in the nodes
     ### Space = O(1) and Time = O(n)
     def reverse
-      if !head || !head.next 
+      if !@head || !@head.next 
         # if 0 or 1 node, then nothing to reverse
         return
       end
   
-      prev = head
-      curr = head.next 
+      prev = @head
+      curr = @head.next 
   
-      # first make the head point to nil since it's the new tail now
-      head.next = nil
+      # first make the @head point to nil since it's the new tail now
+      @head.next = nil
   
       # traverse the SLL
       while curr 
@@ -184,7 +184,7 @@ class LinkedList
         if upcoming 
           curr = upcoming 
         else  
-          # reached the end of SLL, which is the new head
+          # reached the end of SLL, which is the new @head
           @head = curr
           return
         end
@@ -196,16 +196,16 @@ class LinkedList
     # returns the value at the middle element in the singly linked list
     ### Space = O(1) and Time = O(n)
     def find_middle_value
-      return "empty list" if !head 
-      return head.data if !head.next 
+      return "empty list" if !@head 
+      return @head.data if !@head.next 
 
       # brute force: count total # nodes, then go back and get the middle
       # better method: set potentialWinner & currScout, move potentialWinner up by 1 and currScout up by 2 until currScout reach nil
 
       # first possible middle node requirements (must have 3 nodes) met
-      if head.next.next 
-        potentialWinner = head.next 
-        currScout = head.next.next
+      if @head.next.next 
+        potentialWinner = @head.next 
+        currScout = @head.next.next
       else 
         return "only 2 nodes in the list"
       end
@@ -230,12 +230,12 @@ class LinkedList
     # assume indexing starts at 0 while counting to n
     ### Space = O(1) and Time = O(n)
     def find_nth_from_end(n)
-      if !head
-        return "empty list"
+      if !@head
+        return nil
       end
   
-      potentialWinner = head 
-      currScout = head
+      potentialWinner = @head 
+      currScout = @head
       count = 1
   
       while n > count
@@ -274,8 +274,8 @@ class LinkedList
     # returns nil if the list is empty
     ### Space = O(1) and Time = O(1)
     def get_first
-      if head 
-        return head.data
+      if @head 
+        return @head.data
       else  
         return nil
       end
@@ -284,19 +284,44 @@ class LinkedList
     # method that inserts a given value as a new last node in the linked list
     ### Space = O(TODO) and Time = O(TODO)
     def add_last(value)
-      raise NotImplementedError
+      # newNode = Node.new(value)
+      
+      # if !@head 
+      #   @head = newNode
+      # end
 
+      # prev = nil
+      # curr = @head 
 
-
+      # while curr
+      #   if curr.next 
+      #     prev = curr
+      #     curr = curr.next
+      #   else
+      #     curr.next = newNode
+      #     return
+      #   end
+      # end
+      
     end
 
     # method that returns the value of the last node in the linked list
     # returns nil if the linked list is empty
-    ### Space = O(TODO) and Time = O(TODO)
+    ### Space = O(1) and Time = O(n)
     def get_last
-      raise NotImplementedError
+      return nil if !@head
 
+      prev = nil
+      curr = @head 
 
+      while curr 
+        if curr.next 
+          prev = curr
+          curr = curr.next 
+        else  
+          return curr.data
+        end
+      end
 
     end
 
@@ -306,13 +331,13 @@ class LinkedList
     def insert_ascending(data)
       newNode = Node.new(data)
 
-      if !head 
+      if !@head 
         @head = newNode
         return
       end
 
       prev = nil
-      curr = head 
+      curr = @head 
 
       while curr
         if data <= curr.data 
