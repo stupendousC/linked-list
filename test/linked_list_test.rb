@@ -213,49 +213,49 @@ end
 ########################################### Will get to hopefully sometime later, but for now I'm turning in the required parts on SLL
 
 ###### MAY HAVE TO REWRITE SOME TESTS b/c of prev arrow #####
-# describe DoublyLinkedList do
-#     # Arrange
-#     before do
-#         @list = DoublyLinkedList.new
-#     end
+describe DoublyLinkedList do
+    # Arrange
+    before do
+        @list = DoublyLinkedList.new
+    end
 
-#     describe 'initialize' do
-#         it 'can be created' do
+    describe 'initialize' do
+        it 'can be created' do
 
-#             # Assert
-#             expect(@list).must_be_kind_of DoublyLinkedList
-#         end
-#     end
+            # Assert
+            expect(@list).must_be_kind_of DoublyLinkedList
+        end
+    end
 
-#     describe 'add_first & get_first' do
-#         it 'can add values to an empty list' do
-#             # Act
-#             @list.add_first(3)
+    describe 'add_first & get_first' do
+        it 'can add values to an empty list' do
+            # Act
+            @list.add_first(3)
 
-#             # Assert
-#             expect(@list.get_first).must_equal 3
-#         end
+            # Assert
+            expect(@list.get_first).must_equal 3
+        end
 
-#         it 'will put the last added item to the front of the list' do
-#             # Act
-#             @list.add_first(1)
-#             @list.add_first(2)
+        it 'will put the last added item to the front of the list' do
+            # Act
+            @list.add_first(1)
+            @list.add_first(2)
 
-#             # Assert
-#             expect(@list.get_first).must_equal 2
+            # Assert
+            expect(@list.get_first).must_equal 2
 
-#             # Act again
-#             @list.add_first(3)
+            # Act again
+            @list.add_first(3)
 
-#             # Assert
-#             expect(@list.get_first).must_equal 3
-#         end
+            # Assert
+            expect(@list.get_first).must_equal 3
+        end
 
-#         it 'will return `nil` for `getFirst` if the list is empty' do
+        it 'will return `nil` for `getFirst` if the list is empty' do
 
-#             expect(@list.get_first).must_be_nil
-#         end
-#     end
+            expect(@list.get_first).must_be_nil
+        end
+    end
 
     # describe "addLast & getLast" do
     #     it "will add to the front if the list is empty" do

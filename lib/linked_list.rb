@@ -394,96 +394,95 @@ end
 
 
 ########################################### DOUBLY LINKED LIST below ###########################################
-########################################### Will get to hopefully sometime later, but for now I'm turning in the required parts on SLL
 
-# class DLL_Node
-#   attr_reader :data # allow external entities to read value but not write
-#   attr_accessor :next, :prev # allow external entities to read or write next node
+class DLL_Node
+  attr_reader :data # allow external entities to read value but not write
+  attr_accessor :next, :prev # allow external entities to read or write next node
 
-#   def initialize(value, next_node = nil, prev_node = nil)
-#     @data = value
-#     @next = next_node
-#     @prev = prev_node
-#   end
-# end
+  def initialize(value, next_node = nil, prev_node = nil)
+    @data = value
+    @next = next_node
+    @prev = prev_node
+  end
+end
 
-# class DoublyLinkedList < LinkedList
-#   def initialize
-#     @head = nil # keep the @head private. Not accessible outside this class
-#   end
+class DoublyLinkedList < LinkedList
+  def initialize
+    @head = nil # keep the @head private. Not accessible outside this class
+  end
 
-#   def showLL
-#     if !@head 
-#       return "empty list"
-#     end
+  def showLL
+    if !@head 
+      return "empty list"
+    end
 
-#     printout = "LL = #{@head.data}"
-#     curr = @head.next 
+    printout = "LL = #{@head.data}"
+    curr = @head.next 
 
-#     while curr 
-#       printout += " <-> #{curr.data}"
+    while curr 
+      printout += " <-> #{curr.data}"
       
-#       # make sure both directions are valid
-#       if curr.next 
-#         if curr.next.prev != curr 
-#           puts "ERROR!!!"
-#         end
-#       end
+      # make sure both directions are valid
+      if curr.next 
+        if curr.next.prev != curr 
+          puts "ERROR!!!"
+        end
+      end
 
-#       curr = curr.next
-#     end
+      curr = curr.next
+    end
 
-#     puts printout
-#   end
+    puts printout
+  end
 
-#   ### Space = O(1) and Time = O(1)
-#   def add_first(value)
-#     @head = Node.new(value, @head)
-#     @head.next.prev = @head
+  ### Space = O(1) and Time = O(1)
+  def add_first(value)
+    @head = Node.new(value, @head)
+    @head.next.prev = @head
 
-#     self.showLL()
-#   end
+    self.showLL()
+  end
 
-#   ### Space = O(TODO) and Time = O(TODO)
-#   def add_last(value)
-#   end
+  ### Space = O(TODO) and Time = O(TODO)
+  def add_last(value)
+  end
 
-#   ### Space = O(TODO) and Time = O(TODO)
-#   def get_first
-#   end
+  ### Space = O(TODO) and Time = O(TODO)
+  def get_first
+  end
 
-#   ### Space = O(TODO) and Time = O(TODO)
-#   def get_at_index(index)
-#   end
+  ### Space = O(TODO) and Time = O(TODO)
+  def get_at_index(index)
+  end
 
-#   ### Space = O(TODO) and Time = O(TODO)
-#   def reverse
-#   end
+  ### Space = O(TODO) and Time = O(TODO)
+  def reverse
+  end
 
-#   ### Space = O(TODO) and Time = O(TODO)
-#   def delete(value)
+  ### Space = O(TODO) and Time = O(TODO)
+  def delete(value)
 
-#     self.showLL()
-#     prev = nil
-#     curr = @head 
+    self.showLL()
+    prev = nil
+    curr = @head 
 
-#     while curr 
-#       if curr.data == value 
-#         if prev == nil
-#           @head = curr.next 
-#           @head.prev = nil
-#         else  
-#           prev.next = curr.next 
-#           curr.next.prev = prev
-#         end
-#         return
+    while curr 
+      if curr.data == value 
+        if prev == nil
+          @head = curr.next 
+          @head.prev = nil
+        else  
+          prev.next = curr.next 
+          curr.next.prev = prev
+        end
+        return
 
-#       else
-#         prev = curr
-#         curr = curr.next
-#       end
-#     end
+      else
+        prev = curr
+        curr = curr.next
+      end
+    end
 
-#     # if u reached this point, then nothing matches, and no changes made to list
-#   end
-# end
+    # if u reached this point, then nothing matches, and no changes made to list
+  end
+end
